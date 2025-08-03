@@ -28,12 +28,96 @@
 </head>
 <body>
     <div class="container">
-        <div id="text">Hello, World!</div>
+        <div id="text" style="padding: 20px">Hello, World!</div>
+        <div id="spanish-text" style="padding: 20px">Hola Mundo!</div>
         <button onclick="changeText()">NEXT</button>
     </div>
 
     <script>
         let index = 0;
+
+        const spanishWordList = [
+    // Extra inserts
+    "Sacerdocio Aarónico", "Sacerdocio de Melquisedec", "Imposición de manos", "Restauración", "Primera Visión",
+    "Plan de Salvación", "Exaltación", "Matrimonio celestial", "Progresión eterna", "Segunda Venida",
+
+    // Christlike Attributes
+    "Caridad", "Humildad", "Mansedumbre", "Paciencia", "Amabilidad", "Perdón", "Amor",
+    "Servicio", "Gratitud", "Integridad", "Fidelidad", "Obediencia", "Diligencia", "Esperanza", "Gozo",
+    "Luz", "Longanimidad", "Compasión", "Dominio propio",
+
+    // Gospel Principles
+    "Fe", "Arrepentimiento", "Bautismo", "Espíritu Santo", "Perseverar hasta el fin",
+    "Obediencia", "Oración", "Revelación", "Gracia", "Expiación",
+    "Perdón", "Vida eterna", "Albedrío", "Resurrección", "Caridad",
+    "Esperanza", "Amor", "Convenios", "Sacrificio", "Diezmo",
+
+    // Scriptures
+    "Libro de Mormón", "Doctrina y Convenios", "La Perla de Gran Precio", "Antiguo Testamento", "Nuevo Testamento",
+    "Moroni", "Nefi", "Alma", "Mosíah", "Éter",
+    "Enós", "Isaías", "José Smith—Historia", "Artículos de Fe", "Rey Benjamín",
+    "Amón", "Guerreros Jóvenes", "Liahona", "Planchas de Bronce", "Árbol de la Vida",
+
+    // People
+    "José Smith", "Emma Smith", "Brigham Young", "Russell M. Nelson",
+    "Moisés", "Adán", "Juan el Bautista", "Ángel Moroni", "Lehí", "Saría",
+    "Abinadí", "Helamán", "Samuel el Lamanita", "Capitán Moroni", "Jared",
+    "El hermano de Jared", "Mormón", "Jesucristo", "Padre Celestial", "Adán y Eva",
+
+    // Ordinances
+    "Bautismo por inmersión", "Confirmación", "Ordenación al sacerdocio", "Santa Cena", "Investidura",
+    "Sellamiento", "Unción", "Bendecir a los enfermos", "Bendición de bebé",
+
+    // Places
+    "Salt Lake City", "Nauvoo", "Palmyra", "Kirtland", "Misuri",
+    "Arboleda Sagrada", "Cerros de Cumorah", "Sion", "Plaza del Templo",
+
+    // local
+    "Barrio Durham 2º", "Barrio Durham 5º",
+    "Obispo Schmutz", "Kymastrie", 
+
+    // Church Organization
+    "Profeta", "Apóstoles", "Primera Presidencia", "Cuórum de los Doce", "Presidente de estaca",
+    "Obispo", "Sociedad de Socorro", "Mujeres Jóvenes", "Primaria", "Cuórum de Élderes",
+    "Diáconos", "Maestros", "Sacerdotes", "Misioneros", "Barrio",
+    "Estaca", "Conferencia General", "Escuela Dominical", "Seminario", "Instituto",
+
+    // Missionary Terms
+    "Llamado misional", "Placa de nombre", "Predicad Mi Evangelio", "Traslado", "Compañero",
+    "Zona", "Distrito", "Libro de área", "Tocar puertas", "Manual blanco",
+
+    // Values / Youth Themes
+    "Naturaleza divina", "Valor individual", "Buenas obras", "Integridad", "Conocimiento",
+    "Elección y responsabilidad", "Virtud", "Fe en cada paso", "Fortaleza de la Juventud", "Estar en lugares santos",
+
+    // Temples
+    "Recomendación", "Poder de sellamiento", "Bautisterio", "Garment",
+    "Historia familiar", "Genealogía", "Obra del templo", "Espíritu de Elías", "Sesión de investidura",
+
+    // Miscellaneous
+    "Día de reposo", "Ayuno", "Testimonio", "Bendición patriarcal", "Escrituras",
+    "Plan de Salvación", "Vida preterrenal", "Mundo de los espíritus", "Reino celestial", "Reino telestial",
+    "Reino terrestre", "Juicio", "Guerra en los Cielos", "Familias eternas", "Manual de la Iglesia",
+    "Modestia", "Palabra de Sabiduría", "Ley de Castidad", "Noche de Hogar", "Ven, Sígueme",
+
+    // Events / Holidays
+    "Día de los Pioneros", "Pascua", "Navidad", "Trek",
+    "Conferencia de jóvenes", "Campamento de Mujeres Jóvenes", "8 años", "Graduación de seminario",
+
+    // Church Media / Culture
+    "El Amigo", "Liahona", "Santos", "FSY", "Música y la Palabra",
+    "El Coro del Tabernáculo en la Manzana del Templo", "Soy un hijo de Dios", "Las familias pueden ser eternas", "Llamados a servir", "Historias del Libro de Mormón",
+
+    // Doctrinal Phrases
+    "Iré y haré", "Escoge lo correcto", "Sed, pues, perfectos", "Adelante con firmeza", "Sigue al profeta",
+    "La fe sin obras", "Paz en Cristo", "Guarda los mandamientos", "Pequeñas y sencillas cosas", "Perseverar hasta el fin",
+
+    // Jesus multiple times with multiple names for emphasis
+    "Jesucristo", "Salvador", "Redentor", "Mesías",
+    "Señor", "Maestro", "Hijo de Dios", "Alfa y Omega", "Luz del Mundo",
+    "Príncipe de Paz", "Buen Pastor", "Cordero de Dios", "Pan de Vida", "Agua Viva",
+    "Jesús", "Cristo"
+]
 
         const wordsList = [
              // Extra inserts
@@ -122,16 +206,18 @@
         function changeText() {
             const textElement = document.getElementById('text');
             textElement.textContent = wordsList[index];
+            const spanishTextElement = document.getElementById('spanish-text');
+            spanishTextElement.textContent = spanishWordList[index];
             if (index < wordsList.length - 1) {
                 index++;
             } else {
                 index = 0; // Reset to the beginning
-                wordsList = shuffleArray(wordsList);
+                [wordsList, spanishWordList] = shuffleArrays(wordsList, spanishWordList);
             }
         }
 
-        function shuffleArray(array) {
-            let currentIndex = array.length;
+        function shuffleArrays(array1, array2) {
+            let currentIndex = array1.length;
             let randomIndex;
 
             // While there remain elements to shuffle.
@@ -141,13 +227,14 @@
                 currentIndex--;
 
                 // And swap it with the current element.
-                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+                [array1[currentIndex], array1[randomIndex]] = [array1[randomIndex], array1[currentIndex]];
+                [array2[currentIndex], array2[randomIndex]] = [array2[randomIndex], array2[currentIndex]];
             }
 
-            return array;
+            return [array1, array2];
         }
 
-        wordsList = shuffleArray(wordsList);
+        [wordsList, spanishWordList] = shuffleArrays(wordsList, spanishWordList);
     </script>
 </body>
 </html>
