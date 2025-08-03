@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            font-size: xx-large;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="text">Hello, World!</div>
+        <button onclick="changeText()">NEXT</button>
+    </div>
+
+    <script>
+        let index = 0;
+
+        const wordsList = [
+             // Extra inserts
+            "Aaronic Priesthood", "Melchizedek Priesthood", "Laying on of hands", "Restoration", "First Vision",
+            "Plan of Salvation", "Exaltation", "Celestial marriage", "Eternal progression", "Second Coming",
+
+            // Christlike Attributes
+            "Charity", "Humility", "Meekness", "Patience", "Kindness", "Forgiveness", "Love",
+            "Service", "Gratitude", "Integrity", "Faithfulness", "Obedience", "Diligence", "Hope", "Joy",
+            "Light", "Longsuffering", "Compassion", "Self-control",
+
+            // Gospel Principles
+            "Faith", "Repentance", "Baptism", "Holy Ghost", "Endure to the end",
+            "Obedience", "Prayer", "Revelation", "Grace", "Atonement",
+            "Forgiveness", "Eternal life", "Agency", "Resurrection", "Charity",
+            "Hope", "Love", "Covenants", "Sacrifice", "Tithing",
+
+            // Scriptures
+            "Book of Mormon", "Doctrine and Covenants", "Pearl of Great Price", "Old Testament", "New Testament",
+            "Moroni", "Nephi", "Alma", "Mosiah", "Ether",
+            "Enos", "Isaiah", "Joseph Smith—History", "Articles of Faith", "King Benjamin",
+            "Ammon", "Stripling Warriors", "Liahona", "Plates of Brass", "Tree of Life",
+
+            // People
+            "Joseph Smith", "Emma Smith", "Brigham Young", "Russell M. Nelson",
+            "Moses", "Adam", "John the Baptist", "Angel Moroni", "Lehi", "Sariah",
+            "Abinadi", "Helaman", "Samuel the Lamanite", "Captain Moroni", "Jared",
+            "The Brother of Jared", "Mormon", "Jesus Christ", "Heavenly Father", "Adam and Eve",
+
+            // Ordinances
+            "Baptism by Immersion", "Confirmation", "Priesthood Ordination", "Sacrament", "Endowment",
+            "Sealing", "Anointing", "Blessing the Sick", "Baby blessing",
+
+            // Places
+            "Salt Lake City", "Nauvoo", "Palmyra", "Kirtland", "Missouri",
+            "Sacred Grove", "Hill Cumorah", "Zion", "Temple Square",
+
+
+            // local
+            "Durham 2nd Ward", "Durham 5th Ward",
+            "Bishop Schmutz", "Kymastrie", 
+            
+            // Church Organization
+            "Prophet", "Apostles", "First Presidency", "Quorum of the Twelve", "Stake President",
+            "Bishop", "Relief Society", "Young Women", "Primary", "Elders Quorum",
+            "Deacons", "Teachers", "Priests", "Missionaries", "Ward",
+            "Stake", "General Conference", "Sunday School", "Seminary", "Institute",
+
+            // Missionary Terms
+            "Mission call", "Name tag", "Preach My Gospel", "Transfer", "Companion",
+            "Zone", "District", "Area book", "Tracting", "White handbook",
+
+            // Values / Youth Themes
+            "Divine nature", "Individual worth", "Good works", "Integrity", "Knowledge",
+            "Choice and accountability", "Virtue", "Faith in every footstep", "Strength of Youth", "Stand in holy places",
+
+            // Temples
+            "Recommend", "Sealing power", "Baptistry", "Garments",
+            "Family history", "Genealogy", "Temple work", "Spirit of Elijah", "Endowment session",
+
+            // Miscellaneous
+            "Sabbath day", "Fasting", "Testimony", "Patriarchal blessing", "Scriptures",
+            "Plan of Salvation", "Pre-earth life", "Spirit world", "Celestial kingdom", "Telestial kingdom",
+            "Terrestrial kingdom", "Judgment", "War in Heaven", "Eternal families", "Church Handbook",
+            "Modesty", "Word of Wisdom", "Law of Chastity", "Family Home Evening", "Come, Follow Me",
+
+            // Events / Holidays
+            "Pioneer Day", "Easter", "Christmas", "Trek",
+            "Youth conference", "Girls camp", "8 Years Old", "Seminary graduation",
+
+            // Church Media / Culture
+            "The Friend", "Liahona", "Saints", "FSY", "Music and the Spoken Word",
+            "The Tabernacle Choir at Temple Square", "I Am a Child of God", "Families Can Be Together Forever", "Called to Serve", "Book of Mormon Stories",
+
+            // Doctrinal Phrases
+            "I will go and do", "Choose the right", "Be ye therefore perfect", "Press forward", "Follow the prophet",
+            "Faith without works", "Peace in Christ", "Keep the commandments", "Small and simple things", "Endure to the end",
+
+            // Jesus multiple times with multiple namesfor emphasis
+            "Jesus Christ", "Savior", "Redeemer", "Messiah",
+            "Lord", "Master", "Son of God", "Alpha and Omega", "Light of the World",
+            "Prince of Peace", "Good Shepherd", "Lamb of God", "Bread of Life", "Living Water",
+            "Jesus", "Christ"
+        ]
+
+        function changeText() {
+            const textElement = document.getElementById('text');
+            textElement.textContent = wordsList[index];
+            if (index < wordsList.length - 1) {
+                index++;
+            } else {
+                index = 0; // Reset to the beginning
+                wordsList = shuffleArray(wordsList);
+            }
+        }
+
+        function shuffleArray(array) {
+            let currentIndex = array.length;
+            let randomIndex;
+
+            // While there remain elements to shuffle.
+            while (currentIndex !== 0) {
+                // Pick a remaining element.
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                // And swap it with the current element.
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+
+            return array;
+        }
+
+        wordsList = shuffleArray(wordsList);
+    </script>
+</body>
+</html>
